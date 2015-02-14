@@ -10,7 +10,7 @@ import junit.framework.TestSuite;
  * Todo: $5 + 10 CHF = $10 if rate is 2:1
  * 01: 5*2 = $10
  * Todo: make amount private
- * Todo: Dollar side-effects?
+ * 02: Dollar side-effects?
  * Todo: Money rounding?
  *
  */
@@ -34,8 +34,12 @@ public class CurrencyTest extends TestCase {
 
     public void testMultiplication() {
         Dollar five = new Dollar(5);
-        five.times(2);
-        assertEquals(10, five.amount);
+        Dollar product = five.times(2);
+        assertEquals(10, product.amount);
+
+        product = five.times(3);
+        assertEquals(15, product.amount);
+
     }
 
 }
