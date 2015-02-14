@@ -16,6 +16,10 @@ import junit.framework.TestSuite;
  * Todo: hashCode()
  * Todo: Equal null
  * Todo: Equal object
+ * 05: 5 CHF * 2 = 10 CHF
+ * Todo: Dollar/Franc duplication
+ * Todo: Common equals
+ * Todo: Common times
  *
  */
 public class CurrencyTest extends TestCase {
@@ -41,6 +45,12 @@ public class CurrencyTest extends TestCase {
 
         assertEquals(new Dollar(10), five.times(2));
         assertEquals(new Dollar(15), five.times(3));
+    }
+
+    public void testFrancMultiplication() {
+        Franc five = new Franc(5);
+        assertEquals(new Franc(10), five.times(2));
+        assertEquals(new Franc(15), five.times(3));
     }
 
     public void testEquality() {
