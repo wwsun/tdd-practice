@@ -8,7 +8,7 @@ import junit.framework.TestSuite;
  * Created by Weiwei on 2015/2/14.
  *
  * Todo: $5 + 10 CHF = $10 if rate is 2:1
- * Todo: 5*2 = $10
+ * 01: 5*2 = $10
  * Todo: make amount private
  * Todo: Dollar side-effects?
  * Todo: Money rounding?
