@@ -19,7 +19,7 @@ import junit.framework.TestSuite;
  * 05: 5 CHF * 2 = 10 CHF
  * Todo: Dollar/Franc duplication
  * 06: Common equals
- * Todo: Common times
+ * 08-10: Common times
  * 07: Compare Francs with Dollars
  * Todo: Currency?
  *
@@ -68,6 +68,10 @@ public class CurrencyTest extends TestCase {
     public void testCurrency() {
         assertEquals("USD", Money.dollar(1).currency());
         assertEquals("CHF", Money.franc(1).currency());
+    }
+
+    public void testDifferentClassEquality() {
+        assertTrue(new Money(10, "CHF").equals(new Franc(10, "CHF")));
     }
 
 }

@@ -3,11 +3,9 @@ package me.wwsun;
 /**
  * Created by Weiwei on 2015/2/14.
  */
-public abstract class Money {
+public class Money {
     protected int amount;
     protected String currency;
-
-    abstract Money times(int multiplier);
 
     Money(int amount, String currency) {
         this.amount = amount;
@@ -26,9 +24,18 @@ public abstract class Money {
         return currency;
     }
 
+    Money times(int multiplier) {
+        return new Money(amount * multiplier, currency);
+    }
+
     @Override
     public boolean equals(Object obj) {
         Money money = (Money) obj;
-        return amount == money.amount && getClass().equals(money.getClass());
+        return amount == money.amount && currency().equals(money.currency());
+    }
+
+    @Override
+    public String toString() {
+        return amount + " " + currency;
     }
 }
