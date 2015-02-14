@@ -20,6 +20,8 @@ import junit.framework.TestSuite;
  * Todo: Dollar/Franc duplication
  * 06: Common equals
  * Todo: Common times
+ * 07: Compare Francs with Dollars
+ * Todo: Currency?
  *
  */
 public class CurrencyTest extends TestCase {
@@ -59,6 +61,8 @@ public class CurrencyTest extends TestCase {
 
         assertTrue(new Franc(5).equals(new Franc(5)));
         assertFalse(new Franc(5).equals(new Franc(6)));
+
+        assertFalse(new Franc(5).equals(new Dollar(5)));
     }
 
 }
