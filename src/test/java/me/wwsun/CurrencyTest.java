@@ -4,25 +4,16 @@ import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
 
+
 /**
  * Created by Weiwei on 2015/2/14.
  *
  * Todo: $5 + 10 CHF = $10 if rate is 2:1
- * 01: 5*2 = $10
- * 04: make amount private
- * 02: Dollar side-effects?
  * Todo: Money rounding?
- * 03: equals
  * Todo: hashCode()
  * Todo: Equal null
  * Todo: Equal object
- * 05: 5 CHF * 2 = 10 CHF
  * Todo: Dollar/Franc duplication
- * 06: Common equals
- * 08-10: Common times
- * 07: Compare Francs with Dollars
- * Currency?
- * 11: delete testFrancMultiplication
  *
  */
 public class CurrencyTest extends TestCase {
@@ -66,4 +57,12 @@ public class CurrencyTest extends TestCase {
         assertTrue(new Money(10, "CHF").equals(new Franc(10, "CHF")));
     }
 
+    public void testSimpleAddition() {
+        Money five = Money.dollar(5);
+        Expression sum = five.plus(five);
+        Bank bank = new Bank();
+        Money reduced = bank.reduce(sum, "USD");
+
+        assertEquals(Money.dollar(10), reduced);
+    }
 }

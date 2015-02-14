@@ -1,9 +1,10 @@
 package me.wwsun;
 
+
 /**
  * Created by Weiwei on 2015/2/14.
  */
-public class Money {
+public class Money implements Expression {
     protected int amount;
     protected String currency;
 
@@ -37,5 +38,9 @@ public class Money {
     @Override
     public String toString() {
         return amount + " " + currency;
+    }
+
+    public Expression plus(Money addend) {
+        return new Money(amount + addend.amount, currency);
     }
 }
