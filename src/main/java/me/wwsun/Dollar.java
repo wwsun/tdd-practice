@@ -10,7 +10,9 @@ public class Dollar extends Money {
         super(amount, currency);
     }
 
-    static Money dollar(int amount) {
-        return new Money(amount, "USD");
+    @Override
+    String currency() {
+        return currency;
     }
+
 }
