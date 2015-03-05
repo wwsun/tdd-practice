@@ -20,7 +20,7 @@ import junit.framework.TestSuite;
  * Todo: Equal null
  * Todo: Equal object
  * Todo: Dollar/Franc duplication
- * TODO Sum.plus
+ * Sum.plus
  * TODO Expression.times
  *
  */
@@ -117,5 +117,15 @@ public class CurrencyTest extends TestCase {
         bank.addRate("CHF", "USD", 2);
         Money result = bank.reduce(fiveBucks.plus(tenFrancs), "USD");
         assertEquals(Money.dollar(10), result);
+    }
+
+    public void testSumPlusMoney() {
+        Expression fivBucks = Money.dollar(5);
+        Expression tenFrancs = Money.franc(10);
+        Bank bank = new Bank();
+        bank.addRate("CHF", "USD", 2);
+        Expression sum = new Sum(fivBucks, tenFrancs).plus(fivBucks);
+        Money result = bank.reduce(sum, "USD");
+        assertEquals(Money.dollar(15), result);
     }
 }
