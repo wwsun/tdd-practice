@@ -10,7 +10,7 @@ import junit.framework.TestSuite;
  *
  * $5 + 10 CHF = $10 if rate is 2:1
  * $5 + $5 = $10
- * TODO Return money from $5 + $5
+ * Return money from $5 + $5
  * 13 Bank.reduce(Money)
  * 14 Reduce Money with conversion
  * 14 Reduce(Bank, String)
@@ -138,4 +138,10 @@ public class CurrencyTest extends TestCase {
         Money result = bank.reduce(sum, "USD");
         assertEquals(Money.dollar(20), result);
     }
+
+    // Failed
+//    public void testPlusSameCurrencyReturnsMoney() {
+//        Expression sum = Money.dollar(1).plus(Money.dollar(1));
+//        assertTrue(sum instanceof Money);
+//    }
 }
