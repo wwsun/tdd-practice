@@ -8,9 +8,9 @@ import junit.framework.TestSuite;
 /**
  * Created by Weiwei on 2015/2/14.
  *
- * Todo: $5 + 10 CHF = $10 if rate is 2:1
- * Todo: $5 + $5 = $10
- * Todo: Return money from $5 + $5
+ * $5 + 10 CHF = $10 if rate is 2:1
+ * $5 + $5 = $10
+ * TODO Return money from $5 + $5
  * 13 Bank.reduce(Money)
  * 14 Reduce Money with conversion
  * 14 Reduce(Bank, String)
@@ -20,6 +20,8 @@ import junit.framework.TestSuite;
  * Todo: Equal null
  * Todo: Equal object
  * Todo: Dollar/Franc duplication
+ * TODO Sum.plus
+ * TODO Expression.times
  *
  */
 public class CurrencyTest extends TestCase {
@@ -106,5 +108,14 @@ public class CurrencyTest extends TestCase {
 
     public void testIdentityRate() {
         assertEquals(1, new Bank().rate("USD", "USD"));
+    }
+
+    public void testMixedAddition() {
+        Expression fiveBucks = Money.dollar(5);
+        Expression tenFrancs = Money.franc(10);
+        Bank bank = new Bank();
+        bank.addRate("CHF", "USD", 2);
+        Money result = bank.reduce(fiveBucks.plus(tenFrancs), "USD");
+        assertEquals(Money.dollar(10), result);
     }
 }
